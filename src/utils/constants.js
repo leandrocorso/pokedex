@@ -11,3 +11,7 @@ export const HTTP_ERROR = {
   500: 'Erro interno no servidor',
   503: 'Serviço indisponível',
 };
+
+export const pokemonTypes = ['bug', 'dark', 'dragon', 'electric', 'fairy', 'fighting', 'fire', 'flying', 'ghost', 'grass', 'ground', 'ice', 'normal', 'poison', 'psychic', 'rock', 'steel', 'water'];
+export const pokemonHeights = ['hShort', 'hMedium', 'hTall'];
+export const pokemonWeights = ['wLight', 'wNormal', 'wHeavy'];

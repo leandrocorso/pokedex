@@ -14,14 +14,22 @@ import List from 'containers/List';
 import Details from 'containers/Details';
 import NotFound from 'containers/NotFound';
 
+// Theme
+import { ThemeProvider } from 'styled-components';
+import theme from 'theme';
+import GlobalStyle from 'theme/GlobalStyle';
+
 const App = () => (
   <Router>
     <Provider store={store}>
-      <Switch>
-        <Route path="/" component={List} exact />
-        <Route path="/pokemon/:id" component={Details} />
-        <Route path="*" component={NotFound} />
-      </Switch>
+      <ThemeProvider theme={theme}>
+        <Switch>
+          <Route path="/" component={List} exact />
+          <Route path="/pokemon/:id" component={Details} />
+          <Route path="*" component={NotFound} />
+        </Switch>
+        <GlobalStyle />
+      </ThemeProvider>
     </Provider>
   </Router>
 );
