@@ -32,8 +32,16 @@ import { ReactComponent as WeightLight } from 'assets/icons/pokemonWeights/light
 import { ReactComponent as WeightNormal } from 'assets/icons/pokemonWeights/normal.svg';
 import { ReactComponent as WeightHeavy } from 'assets/icons/pokemonWeights/heavy.svg';
 
+// Navegation icons
+import { ReactComponent as ArrowLeft } from 'assets/icons/arrow-left.svg';
+import { ReactComponent as ArrowRight } from 'assets/icons/arrow-right.svg';
+import { ReactComponent as Filter } from 'assets/icons/filter.svg';
+import { ReactComponent as Menu } from 'assets/icons/menu.svg';
+import { ReactComponent as Search } from 'assets/icons/search.svg';
+import { ReactComponent as Sort } from 'assets/icons/sort.svg';
+
 const iconTypes = {
-  // types
+  // Pokemon types
   bug: TypeBug,
   dark: TypeDark,
   dragon: TypeDragon,
@@ -52,18 +60,22 @@ const iconTypes = {
   rock: TypeRock,
   steel: TypeSteel,
   water: TypeWater,
-  // Heights
+  // Pokemon Heights
   hShort: HeightShort,
   hMedium: HeightMedium,
   hTall: HeightTall,
-  // Weights
+  // Pokemon Weights
   wLight: WeightLight,
   wNormal: WeightNormal,
   wHeavy: WeightHeavy,
+  // Navegation icons
+  arrowLeft: ArrowLeft,
+  arrowRight: ArrowRight,
+  filter: Filter,
+  menu: Menu,
+  search: Search,
+  sort: Sort,
 };
-
-// Populating prop types
-const iconKeys = Object.keys(iconTypes);
 
 const StyledIcon = styled.div`${({ selected }) => `
   align-items: center;
@@ -85,28 +97,32 @@ const StyledIcon = styled.div`${({ selected }) => `
   }
 `}`;
 
-const IconComponent = ({ type, selected, className }) => {
-  const Icon = iconTypes[type];
+const Icon = ({ type, selected, className }) => {
+  const SelectedIcon = iconTypes[type];
   return (
     <StyledIcon
       className={className}
       selected={selected}
     >
-      <Icon />
+      <SelectedIcon />
     </StyledIcon>
   );
 };
 
-IconComponent.propTypes = {
+// Prop types
+
+const iconKeys = Object.keys(iconTypes);
+
+Icon.propTypes = {
   type: PropTypes.oneOf(iconKeys),
   selected: PropTypes.bool,
   className: PropTypes.string,
 };
 
-IconComponent.defaultProps = {
+Icon.defaultProps = {
   type: 'normal',
   selected: false,
   className: '',
 };
 
-export default IconComponent;
+export default Icon;

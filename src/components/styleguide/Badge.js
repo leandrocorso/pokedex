@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { pokemonTypes } from 'utils/constants';
-import Icon from 'components/Icon';
+import Icon from 'components/styleguide/Icon';
 
 
 const StyledBadge = styled.div`${({ type, theme: { colors } }) => `

@@ -1,45 +1,27 @@
 import React from 'react';
+import styled from 'styled-components';
 
 // Components
 import {
-  AppTitle,
-  Badge,
+  Container,
   Description,
-  FilterTitle,
-  PokemonIcon,
-  PokemonName,
-  PokemonNumber,
-  PokemonType,
-  Title,
+  SearchForm,
 } from 'components';
 
+const PokemonList = styled.ul`${({ theme: { colors } }) => `
+`}`;
+
+const PokemonListItem = styled.ul`${({ theme: { colors } }) => `
+`}`;
+
 const List = () => (
-  <>
-    <Title>List</Title>
-    <AppTitle>Aplication title</AppTitle>
-    <PokemonName>Pokemon Name</PokemonName>
-    <FilterTitle>Filter title</FilterTitle>
-    <Description>Description</Description>
-    <PokemonNumber>PokemonNumber</PokemonNumber>
-    <PokemonType>PokemonType</PokemonType>
-    <Badge type="fire">Fire</Badge>
-    <Badge type="electric">Electric</Badge>
-    <PokemonIcon type="normal" />
-    <PokemonIcon type="fairy" selected />
-    <PokemonIcon type="fire" />
-    <PokemonIcon type="hShort" />
-    <PokemonIcon type="hMedium" />
-    <PokemonIcon type="hTall" />
-    <PokemonIcon type="hShort" selected />
-    <PokemonIcon type="hMedium" selected />
-    <PokemonIcon type="hTall" selected />
-    <PokemonIcon type="wLight" />
-    <PokemonIcon type="wNormal" />
-    <PokemonIcon type="wHeavy" />
-    <PokemonIcon type="wLight" selected />
-    <PokemonIcon type="wNormal" selected />
-    <PokemonIcon type="wHeavy" selected />
-  </>
+  <Container>
+    <Description>Search for Pokémon by name or using the National Pokédex number.</Description>
+    <SearchForm />
+    <PokemonList>
+      <PokemonListItem />
+    </PokemonList>
+  </Container>
 );
 
 export default List;

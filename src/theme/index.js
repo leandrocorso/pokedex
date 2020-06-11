@@ -9,6 +9,8 @@ const $textGrey = $grey;
 const $defaultInput = $secondary;
 const $pressedInput = '#E2E2E2';
 
+const defaultSpacing = 0.625;
+
 export default {
   fonts: {
     '$font-primary': 'SF Display',
@@ -32,6 +34,7 @@ export default {
     '$type-rock': '#BAAB82',
     '$type-steel': '#417D9A',
     '$type-watter': '#4A90DA',
+    '$background-default': $white,
     '$background-type-bug': '#8BD674',
     '$background-type-dark': '#6F6E78',
     '$background-type-dragon': '#7383B9',
@@ -64,18 +67,13 @@ export default {
     '$gradient-pokemon-circle': 'linear-gradient(349.24deg, rgba(255, 255, 255, 0.35) 16.24%, rgba(255, 255, 255, 0) 44.6%)',
     '$text-field-default-background': $defaultInput,
     '$text-field-default-text': $textGrey,
+    '$text-field-default-placeholder': $textGrey,
     '$text-field-default-icon': $textGrey,
     '$text-field-focused-background': $pressedInput,
-    '$text-field-focused-text': $textGrey,
+    '$text-field-focused-text': $textBlack,
+    '$text-field-focused-placeholder': $textGrey,
     '$text-field-focused-cursor': $primary,
     '$text-field-focused-icon': $textGrey,
-    '$text-field-typing-background': $pressedInput,
-    '$text-field-typing-text': $textGrey,
-    '$text-field-typing-cursor': $primary,
-    '$text-field-typing-icon': $textGrey,
-    '$text-field-filled-background': $defaultInput,
-    '$text-field-filled-text': $textGrey,
-    '$text-field-filled-icon': $textGrey,
     '$text-white': $textWhite,
     '$text-black': $textBlack,
     '$text-grey': $textGrey,
@@ -86,5 +84,16 @@ export default {
     '$weight-wLight': '#99CD7C',
     '$weight-wNormal': '#57B2DC',
     '$weight-wHeavy': '#5A92A5',
+  },
+  spacing: {
+    '$half-spacing': `${defaultSpacing / 2}rem`,
+    '$default-spacing': `${defaultSpacing}rem`,
+    '$section-margin': `${defaultSpacing * 2}rem`,
+    '$container-padding': `${defaultSpacing * 4}rem`,
+    '$paragraph-spacing': `${defaultSpacing}rem`,
+    '$input-radius': `${defaultSpacing}rem`,
+  },
+  transitions: {
+    '$default-transition': 'all .2s ease-out',
   },
 };

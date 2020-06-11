@@ -18,17 +18,20 @@ import NotFound from 'containers/NotFound';
 import { ThemeProvider } from 'styled-components';
 import theme from 'theme';
 import GlobalStyle from 'theme/GlobalStyle';
+import Template from 'theme/Template';
 
 const App = () => (
   <Router>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <Switch>
-          <Route path="/" component={List} exact />
-          <Route path="/pokemon/:id" component={Details} />
-          <Route path="*" component={NotFound} />
-        </Switch>
-        <GlobalStyle />
+        <Template>
+          <Switch>
+            <Route path="/" component={List} exact />
+            <Route path="/pokemon/:id" component={Details} />
+            <Route path="*" component={NotFound} />
+          </Switch>
+          <GlobalStyle />
+        </Template>
       </ThemeProvider>
     </Provider>
   </Router>

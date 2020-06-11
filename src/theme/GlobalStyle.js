@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-import typography from './typography';
 
 export default createGlobalStyle`
 
@@ -21,16 +20,28 @@ export default createGlobalStyle`
         src: url("https://sf.abarba.me/SF-UI-Display-Medium.otf");
     }
 
-    ${({ theme: { fonts, colors } }) => `
+    ${({ theme: { fonts, colors, spacing } }) => `
+
+        * {
+            border: 0;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            outline: 0;
+        }
 
         body {
+            background-color: ${colors['$background-default']};
+            color: ${colors['$text-black']};
             font-family: ${fonts['$font-primary']};
-            color: ${colors['$text-black']}
+        }
+
+        p {
+            margin-top: ${spacing['$paragraph-spacing']};
+            margin-bottom: ${spacing['$paragraph-spacing']};
         }
 
     `}
-
-    ${typography}
 
 
 `;
