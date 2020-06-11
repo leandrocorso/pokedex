@@ -13,6 +13,7 @@ import Title from './styleguide/Title';
 // Template
 import Container from './template/Container';
 import Header from './template/Header';
+import PokemonListItem from './template/PokemonListItem';
 import SearchForm from './template/SearchForm';
 
 export {
@@ -30,5 +31,6 @@ export {
   // Template
   Container,
   Header,
+  PokemonListItem,
   SearchForm,
 };
