@@ -12,11 +12,6 @@ class PokemonService {
   static async fetchPokemon(name) {
     return axios.get(`${BASE_URL}/pokemon/${name}`);
   }
-
-  // Fetch details
-  static fetchPokemonDetais(id) {
-    return axios.get(`${BASE_URL}/pokemon/${id}`);
-  }
 }
 
 export default PokemonService;

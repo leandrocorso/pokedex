@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import styled from 'styled-components';
 
 // Actions
 import { getAll } from 'store/pokemon/actions';
@@ -9,14 +8,12 @@ import { getAll } from 'store/pokemon/actions';
 import {
   Container,
   Description,
+  HeaderDefault,
   PokemonListItem,
   SearchForm,
 } from 'components';
 
-const PokemonList = styled.ul`${({ theme: { colors } }) => `
-`}`;
-
-const List = () => {
+const Home = () => {
   const dispatch = useDispatch();
   const { isLoading, list } = useSelector((state) => state.pokemon);
 
@@ -25,20 +22,22 @@ const List = () => {
   }, [dispatch]);
 
   return (
-    <Container>
-      <Description>Search for Pokémon by name or using the National Pokédex number.</Description>
-      <SearchForm />
-
-      {
-        list.length && !isLoading
+    <>
+      <HeaderDefault />
+      <Container>
+        <Description>Search for Pokémon by name or using the National Pokédex number.</Description>
+        <SearchForm />
+        {
+        list.length > 0 && !isLoading
           && (
-            <PokemonList>
+            <ul>
               { list.map((p) => <PokemonListItem key={p.name} pokemon={p} />) }
-            </PokemonList>
+            </ul>
           )
       }
-    </Container>
+      </Container>
+    </>
   );
 };
 
-export default List;
+export default Home;

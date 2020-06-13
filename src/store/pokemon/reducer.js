@@ -1,9 +1,15 @@
-import { FETCH_POKEMON_LIST, FETCH_POKEMON_DETAILS } from './actionTypes';
+import {
+  FETCH_POKEMON_LIST,
+  FETCH_POKEMON_DETAILS,
+  SET_POKEMON_DETAILS,
+  SET_SECTION,
+} from './actionTypes';
 
 const INITIAL_STATE = {
   isLoading: false,
   list: [],
   details: {},
+  section: '',
   error: '',
 };
 
@@ -47,7 +53,6 @@ export default function pokemonReducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         isLoading: false,
-        details: action.data,
         error: '',
       };
 
@@ -56,6 +61,18 @@ export default function pokemonReducer(state = INITIAL_STATE, action) {
         ...state,
         isLoading: false,
         error: action.error,
+      };
+
+    case SET_POKEMON_DETAILS:
+      return {
+        ...state,
+        details: action.data,
+      };
+
+    case SET_SECTION:
+      return {
+        ...state,
+        section: action.data,
       };
 
     default: return state;

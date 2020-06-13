@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
+// Actions
+import { setDetails } from 'store/pokemon/actions';
+
+// Compoments
 import { Badge, PokemonName, PokemonNumber } from 'components';
 import pattern from 'assets/patterns/6x3.svg';
 import pokeball from 'assets/patterns/pokeball.svg';
 
+// Styles
 const StyledItem = styled.li`${({ type, theme: { colors, spacing } }) => `
     background-color: ${colors[`$background-type-${type}`]};
     border-radius: ${spacing['$pokemon-list-radius']};
@@ -48,23 +55,51 @@ const StyledPokeball = styled.span`${({ theme: { colors } }) => `
 `}`;
 
 const StyledImage = styled.img`
-    bottom: 10px;
-    position: absolute;
-    right: 0;
+  bottom: 10px;
+  position: absolute;
+  right: 0;
 `;
+
+const StyledButton = styled.button`
+  background: transparent;
+  cursor: pointer;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+`;
+
+// Component
 
 const PokemonListItem = ({ pokemon }) => {
   const [image, setImage] = useState('');
+  const dispatch = useDispatch();
+  const history = useHistory();
   const { id, name, types } = pokemon;
 
   const typeList = types.map(({ type }) => type.name);
 
   useEffect(() => {
-    import(`assets/images/${id}.png`).then((i) => setImage(i.default));
-  }, []);
+    const loadImage = async () => {
+      const image = await import(`assets/images/${id}.png`).then((i) => i.default);
+      setImage(image);
+    }
+    loadImage();
+  }, [id]);
+
+  const handleSelect = () => {
+    dispatch(setDetails(pokemon));
+    history.push(`/${name}`);
+  };
 
   return (
+
     <StyledItem type={typeList[0]} name={name}>
+
+      <StyledButton type="button" onClick={handleSelect} />
+
       <StyledPattern />
       <StyledPokeball />
       <StyledImage src={image} alt={name} />

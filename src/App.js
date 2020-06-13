@@ -10,7 +10,7 @@ import {
 import store from 'store';
 
 // Containers
-import List from 'containers/List';
+import Home from 'containers/Home';
 import Details from 'containers/Details';
 import NotFound from 'containers/NotFound';
 
@@ -18,20 +18,17 @@ import NotFound from 'containers/NotFound';
 import { ThemeProvider } from 'styled-components';
 import theme from 'theme';
 import GlobalStyle from 'theme/GlobalStyle';
-import Template from 'theme/Template';
 
 const App = () => (
   <Router>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <Template>
-          <Switch>
-            <Route path="/" component={List} exact />
-            <Route path="/pokemon/:id" component={Details} />
-            <Route path="*" component={NotFound} />
-          </Switch>
-          <GlobalStyle />
-        </Template>
+        <Switch>
+          <Route path="/" component={Home} exact />
+          <Route path="/:name" component={Details} />
+          <Route path="*" component={NotFound} />
+        </Switch>
+        <GlobalStyle />
       </ThemeProvider>
     </Provider>
   </Router>

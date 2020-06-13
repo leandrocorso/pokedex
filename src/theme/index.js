@@ -88,6 +88,7 @@ export default {
   spacing: {
     '$half-spacing': `${defaultSpacing / 2}rem`,
     '$default-spacing': `${defaultSpacing}rem`,
+    '$double-spacing': `${defaultSpacing * 2}rem`,
     '$section-margin': `${defaultSpacing * 2}rem`,
     '$container-padding': `${defaultSpacing * 4}rem`,
     '$paragraph-spacing': `${defaultSpacing}rem`,

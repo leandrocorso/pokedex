@@ -28,16 +28,16 @@ const Nav = styled.nav`${({ theme: { spacing } }) => `
   padding-bottom: ${spacing['$container-padding']};
 `}`;
 
-const NavList = styled.ul`${({ theme: { colors } }) => `
+const NavList = styled.ul`
   display: flex;
   justify-content: flex-end;
-`}`;
+`;
 
 const NavItem = styled.li`${({ theme: { spacing } }) => `
   margin-left: ${spacing['$half-spacing']}
 `}`;
 
-const Header = () => (
+const HeaderDefault = () => (
   <>
     <StyledPokeball />
     <StyledHeader>
@@ -53,4 +53,4 @@ const Header = () => (
   </>
 );
 
-export default Header;
+export default HeaderDefault;
