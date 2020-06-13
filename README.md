@@ -13,7 +13,7 @@ Criado a partir do [Create React App](https://github.com/facebook/create-react-a
 1. Na pasta do projeto execute a aplicação usando: <br />
 `yarn start` ou `npm start`
 
-O navegador deverá carregar automaticamente após o procedimento, caso não ocorra acesse o endereço padrão: <br />
+2. O navegador deverá carregar automaticamente após o procedimento, caso não ocorra acesse o endereço padrão: <br />
 `http://localhost:3000`
 
 
