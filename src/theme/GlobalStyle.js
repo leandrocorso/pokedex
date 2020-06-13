@@ -36,6 +36,13 @@ export default createGlobalStyle`
             font-family: ${fonts['$font-primary']};
         }
 
+        #root {
+            max-width: 410px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+
         p {
             margin-top: ${spacing['$paragraph-spacing']};
             margin-bottom: ${spacing['$paragraph-spacing']};

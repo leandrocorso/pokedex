@@ -71,6 +71,10 @@ const StyledButton = styled.button`
   z-index: 1;
 `;
 
+const StyledPokemonName = styled(PokemonName)`${({theme: {colors}}) => `
+    color: ${colors['$text-white']}
+`}`
+
 // Component
 
 const PokemonListItem = ({ pokemon }) => {
@@ -109,7 +113,7 @@ const PokemonListItem = ({ pokemon }) => {
         {`${id}`.padStart(3, 0)}
       </PokemonNumber>
 
-      <PokemonName>{name}</PokemonName>
+      <StyledPokemonName>{name}</StyledPokemonName>
 
       <TypesList>
         {

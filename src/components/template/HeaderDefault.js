@@ -14,13 +14,13 @@ const StyledHeader = styled.div`${({ theme: { spacing } }) => `
 
 const StyledPokeball = styled.span`${({ theme: { colors } }) => `
   background: ${colors['$gradient-pokeball']};
-  height:100vw;
+  height:205px;
   mask-image: url(${pokeball});
+  mask-position-y: -205px;
   mask-repeat: no-repeat;
   mask-size: cover;
   position: absolute;
-  top: -50vw;
-  width: 100vw;
+  width: 100%;
   z-index: -1;
 `}`;
 
