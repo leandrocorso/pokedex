@@ -22,6 +22,8 @@ const StyledNav = styled.nav`${({ theme: { spacing } }) => `
 const StyledMenu = styled.ul`
     display:flex;
     justify-content: space-between;
+    position: relative;
+    z-index: 1;
 `;
 
 const StyledButton = styled.button`${({ theme: { colors } }) => `
@@ -48,6 +50,7 @@ const StyledPokeball = styled.div`${({ posX, rotation, theme: { colors } }) => `
     top: 23px;
     transform: rotate(${rotation}deg);
     transition: all .5s ease-out;
+    z-index: 0;
 `}`;
 
 // Component
@@ -77,13 +80,17 @@ const Menu = () => {
   }, [section, dispatch]);
 
   const handleContent = ({ target }, { current }) => {
-    // Pokeball position
+    // Pressed button attributes
     const { x, width } = current.getBoundingClientRect();
     const currentCenter = x + (width / 2);
-    const pokeballR = pokeballX >= currentCenter ? pokeballRotation - 180 : pokeballRotation + 180;
-    setPokeballX(currentCenter);
+    // Root container width
+    const rootWidth = document.getElementById('root').getBoundingClientRect().width;
+    // Pokeball position
+    const pokeballPosX = currentCenter - ((window.innerWidth - rootWidth) / 2);
+    const pokeballR = pokeballX >= pokeballPosX ? pokeballRotation - 180 : pokeballRotation + 180;
+    setPokeballX(pokeballPosX);
     setPokeballRotation(pokeballR);
-    // section
+    // change section
     dispatch(setSection(target.name));
   };
 

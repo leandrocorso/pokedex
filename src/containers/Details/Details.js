@@ -41,11 +41,11 @@ const StyledBody = styled.div`${({ theme: { colors, spacing } }) => `
 const StyledWrapper = styled.div`${({ position }) => `
   display: inline-flex;
   position: relative;
-  left: -${position}vw;
+  left: -${position}px;
   transition: all .3s ease-out;
 
   section {
-    width: 100vw;
+    width: 410px;
   }
 `}`;
 
@@ -69,9 +69,9 @@ const Details = () => {
     if (section === 'about') {
       setSectionPos(0);
     } else if (section === 'stats') {
-      setSectionPos(100);
+      setSectionPos(410);
     } else if (section === 'evolution') {
-      setSectionPos(200);
+      setSectionPos(820);
     }
   }, [section]);
 
