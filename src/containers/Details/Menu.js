@@ -67,11 +67,28 @@ const Menu = () => {
   // Section
   const { section } = useSelector((state) => state.pokemon);
 
+  const pokeballPosition = (pressedButton) => {
+    // Width of "root" element
+    const rootWidth = document.getElementById('root').getBoundingClientRect().width;
+    // Width and "x" axis from pressed menu button
+    const { x, width } = pressedButton.current.getBoundingClientRect();
+    const centerButton = x + (width / 2);
+    // Pokeball position
+    const posX = centerButton - ((window.innerWidth - rootWidth) / 2);
+    setPokeballX(posX);
+    // Pokeball rotation
+    setPokeballRotation(0);
+    if (pressedButton.current.name !== section) {
+      const pokeballR = posX > pokeballX
+        ? pokeballRotation + 180
+        : pokeballRotation - 180;
+      setPokeballRotation(pokeballR);
+    }
+  };
+
   // Pokeball position
   useEffect(() => {
-    const { x, width } = about.current.getBoundingClientRect();
-    setPokeballX((x + (width / 2)));
-    setPokeballRotation(0);
+    pokeballPosition(about);
   }, []);
 
   // section
@@ -79,18 +96,8 @@ const Menu = () => {
     if (!section) dispatch(setSection('about'));
   }, [section, dispatch]);
 
-  const handleContent = ({ target }, { current }) => {
-    // Pressed button attributes
-    const { x, width } = current.getBoundingClientRect();
-    const currentCenter = x + (width / 2);
-    // Root container width
-    const rootWidth = document.getElementById('root').getBoundingClientRect().width;
-    // Pokeball position
-    const pokeballPosX = currentCenter - ((window.innerWidth - rootWidth) / 2);
-    const pokeballR = pokeballX >= pokeballPosX ? pokeballRotation - 180 : pokeballRotation + 180;
-    setPokeballX(pokeballPosX);
-    setPokeballRotation(pokeballR);
-    // change section
+  const handleContent = ({ target }, pressedButton) => {
+    pokeballPosition(pressedButton);
     dispatch(setSection(target.name));
   };
 
